@@ -1,0 +1,16 @@
+package com.zzq.test;
+
+import org.junit.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
+@RunWith(BlockJUnit4ClassRunner.class)
+public class Test extends UnitTestBase{
+	public Test(){
+		super("classpath*:spring-ioc.xml");
+	}
+	
+	@Test
+	private void Test01(){
+		System.out.println("test");
+	}
+}

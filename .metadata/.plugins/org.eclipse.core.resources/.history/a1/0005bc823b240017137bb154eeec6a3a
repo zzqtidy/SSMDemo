@@ -1,0 +1,7 @@
+package com.zzq.test;
+
+public class Test extends UnitTestBase{
+	public Test(){
+		super("classpath*:spring-ioc.xml");
+	}
+}

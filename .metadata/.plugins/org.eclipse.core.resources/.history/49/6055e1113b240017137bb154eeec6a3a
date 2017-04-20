@@ -1,0 +1,42 @@
+package com.zzq.test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.util.StringUtils;
+public class UnitTestBase {
+	//通过加载xml来实现上下文
+	private ClassPathXmlApplicationContext context;
+	private String springXmlPath;
+	//无参数构造函数
+	public UnitTestBase(){}
+	
+	//单元测试方法执行之前运行
+	@Before
+	public void before(){
+		if (StringUtils.isEmpty(springXmlPath)) {
+			springXmlPath="classpath*:spring-*.xml";
+		}
+		try {
+			context=new ClassPathXmlApplicationContext(springXmlPath.split("[,\\s]+"));
+			context.start();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	//单元测试方法执行之后运行
+	@After
+	public void after(){
+		context.destroy();
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected <T extends Object> T getBean(String beanId){
+		return (T)context.getBean(beanId);
+	}
+	@SuppressWarnings("unchecked")
+	protected <T extends Object> T getBean(Class clazz){
+		return (T)context.getBean(clazz);
+	}
+}

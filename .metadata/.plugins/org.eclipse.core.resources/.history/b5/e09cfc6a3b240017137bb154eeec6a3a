@@ -1,0 +1,5 @@
+package com.zzq.test;
+
+public class Test extends UnitTestBase{
+
+}

@@ -1,0 +1,42 @@
+package com.zzq.service.impl;
+
+import com.zzq.dao.TestDao;
+import com.zzq.service.TestManager;
+
+/**
+* @ClassName: TestManagerImpl
+* @Description: 测试的应用实现类
+* @author tylerz
+* @date 2017年4月18日 下午10:31:34
+*
+*/ 
+public class TestManagerImpl implements TestManager {
+	
+	//使用setter注入
+	private TestDao testDao;
+	public void setTestDao(TestDao testDao) {
+		this.testDao = testDao;
+	}
+	
+	//是哟个构造函数
+	private TestDao testDaoConstructor;
+	public TestManagerImpl(TestDao testDaoConstructor){
+		this.testDaoConstructor=testDaoConstructor;
+	}
+
+	/* (非 Javadoc)
+	* <p>Title: save</p>
+	* <p>Description: </p>
+	* @see com.zzq.service.TestManager#save()
+	*/ 
+	@Override
+	public void save() {
+		// TODO Auto-generated method stub
+		System.out.println("进入Service——Setter");
+		testDao.save("传入的数据——Setter");
+		
+		System.out.println("进入Service——Constructor");
+		testDaoConstructor.save("传入的数据——Constructor");
+	}
+
+}
