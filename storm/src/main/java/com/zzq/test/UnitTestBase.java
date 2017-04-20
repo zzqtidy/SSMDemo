@@ -14,7 +14,7 @@ public class UnitTestBase {
 	//通过加载xml来实现上下文
 	private ClassPathXmlApplicationContext context;
 	private String springXmlPath;
-	//无参数构造函数
+	//构造函数
 	public UnitTestBase(String springXmlPath){
 		this.springXmlPath=springXmlPath;
 	}
